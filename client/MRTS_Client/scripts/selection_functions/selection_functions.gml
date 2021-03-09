@@ -53,7 +53,7 @@ function select_units_in_rectangle(pressed_x, pressed_y, released_x, released_y)
 		for(var i =0; i< nr_candidates; i++)
 		{
 			var candidate = ds_units_in_box[|i]
-			if (candidate.controlling_player = obj_local_player.socket_id)
+			if (candidate.controlling_player = obj_local_player)
 			{
 				candidate.selected = true
 				ds_list_add(selected_units, candidate)

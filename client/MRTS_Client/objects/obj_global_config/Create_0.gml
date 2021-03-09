@@ -1,4 +1,5 @@
 #region configuration
+
 #endregion
 
 #region globals initialization
@@ -14,6 +15,7 @@ enum network
 	player_connect,
 	player_joined,
 	player_disconnect,
+	player_sync,
 	unit_create,
 	move_order,
 	test

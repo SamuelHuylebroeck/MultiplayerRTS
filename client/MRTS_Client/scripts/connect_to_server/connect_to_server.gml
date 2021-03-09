@@ -1,5 +1,3 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function connect_to_server(){
 	client = network_create_socket(network_socket_tcp)
 	show_debug_message("Connecting to " + string(ip_address) + " at port " + string(port) + " with socket " + string(client)) 

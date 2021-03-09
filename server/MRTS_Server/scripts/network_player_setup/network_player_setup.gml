@@ -7,9 +7,12 @@ function network_player_setup(socket, username){
 	var player = instance_create_layer(spawn_x, spawn_y, "Players", obj_player)
 	player.username=username
 	player.socket=socket
+	player.assigned_colour = global.player_colours[nr_active_players-1]
 	
 	//Register player and bring  their local session up to date with the server state
 	ds_map_add(socket_to_player, socket, player)
+	broadcast_player_sync(player)
+	load_in_players(socket)
 	load_in_units(socket)
 	
 	//Spawn a single hornet
@@ -37,7 +40,20 @@ function broadcast_create_unit(unit){
 		send_create_unit(socket, unit)
 	}
 }
-	
+
+function load_in_players(player_socket){
+	for (var i=0; i<ds_list_size(socket_list); i++)
+	{
+		var other_socket = socket_list[|i]
+		if player_socket != other_socket
+		{
+			var other_player = ds_map_find_value(socket_to_player, other_socket)
+			send_player_sync(player_socket, other_player)
+		}
+	}
+
+}
+
 function load_in_units(player_socket){
 	for (var i=0; i<ds_list_size(socket_list); i++)
 	{
@@ -52,4 +68,20 @@ function load_in_units(player_socket){
 		}
 	}
 
+}
+
+function send_player_sync(socket, player){
+	buffer_seek(server_buffer, buffer_seek_start,0)
+	buffer_write(server_buffer, buffer_u8, network.player_sync)
+	buffer_write(server_buffer, buffer_u8, player.socket);
+	buffer_write(server_buffer, buffer_string, player.username);
+	buffer_write(server_buffer, buffer_u32, player.assigned_colour);
+	network_send_packet(socket, server_buffer, buffer_tell(server_buffer));
+
+}
+function broadcast_player_sync(player){
+	for (var i =0; i< ds_list_size(socket_list); i++){
+		var socket = ds_list_find_value(socket_list, i)
+		send_player_sync(socket, player)
+	}
 }

@@ -24,8 +24,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "control",
-    "path": "folders/Objects/control.yy",
+    "name": "orders",
+    "path": "folders/Objects/control/orders.yy",
   },
   "resourceVersion": "1.0",
   "name": "p_order",

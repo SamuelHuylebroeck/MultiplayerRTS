@@ -30,7 +30,6 @@ switch(type_event){
 			network_send_packet(_other_sock, server_buffer, buffer_tell(server_buffer));
 		}
 		
-		
 		break;
 	case network_type_data:
 		var buffer =  ds_map_find_value(async_load, "buffer");

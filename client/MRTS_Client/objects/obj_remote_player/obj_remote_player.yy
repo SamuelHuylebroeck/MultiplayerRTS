@@ -1,15 +1,12 @@
 {
-  "spriteId": {
-    "name": "spr_ui_move_target",
-    "path": "sprites/spr_ui_move_target/spr_ui_move_target.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "p_order",
-    "path": "objects/p_order/p_order.yy",
+    "name": "p_player",
+    "path": "objects/p_player/p_player.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -23,17 +20,15 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"parent":{"name":"ord_move","path":"objects/ord_move/ord_move.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "orders",
-    "path": "folders/Objects/control/orders.yy",
+    "name": "players",
+    "path": "folders/Objects/control/players.yy",
   },
   "resourceVersion": "1.0",
-  "name": "ord_move",
+  "name": "obj_remote_player",
   "tags": [],
   "resourceType": "GMObject",
 }
