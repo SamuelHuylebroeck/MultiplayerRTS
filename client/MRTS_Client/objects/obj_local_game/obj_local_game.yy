@@ -3,7 +3,7 @@
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
-  "persistent": false,
+  "persistent": true,
   "parentObjectId": {
     "name": "p_game",
     "path": "objects/p_game/p_game.yy",
@@ -20,7 +20,11 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":88,"eventType":9,"collisionObjectId":null,"parent":{"name":"obj_local_game","path":"objects/obj_local_game/obj_local_game.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":67,"eventType":9,"collisionObjectId":null,"parent":{"name":"obj_local_game","path":"objects/obj_local_game/obj_local_game.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":82,"eventType":9,"collisionObjectId":null,"parent":{"name":"obj_local_game","path":"objects/obj_local_game/obj_local_game.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {

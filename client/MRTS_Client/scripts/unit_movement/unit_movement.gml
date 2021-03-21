@@ -1,23 +1,62 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function unit_movement(){
-	if target != noone {
-		//Get direction of movement
-		var x_to = target.x
-		var y_to = target.y
-		
-		var dir = point_direction(x,y,x_to, y_to)
-		//Execute turning
-		direction = dir
-		image_angle = direction
-		//Accelerate
-		var speed_this_frame = unit_max_speed
-		 
-		//Move
-		h_speed=lengthdir_x(speed_this_frame, dir);
-		v_speed = lengthdir_y(speed_this_frame, dir);
-		scr_unit_execute_movement_and_collision()
-		//Check if target is reached
-		//TODO
+	
+	if (not state_initialized)
+	{
+		init_movement();
 	}
+	current_speed = clamp(current_speed + unit_acceleration, 0, unit_max_speed)
+	path_speed = current_speed
+	animate_movement();
+	displace_colliding_units();
+}
+
+
+
+function init_movement(){
+	if (not state_initialized and target != noone){
+		path_found = calculate_movement_path(target.x,target.y, current_path)
+		if (path_found){
+			path_start(current_path,current_speed, path_action_stop, false)
+		}
+		state_initialized = true
+	}
+}
+
+function animate_movement(){
+		image_angle = direction
+}
+
+function displace_colliding_units(){
+	var displacement_value = 4
+	var ds_units_colliding = ds_list_create()
+	var nr_collisions = instance_place_list(x,y, p_unit, ds_units_colliding, false)
+	if (nr_collisions > 0)
+	{
+		for (var i = 0; i< ds_list_size(ds_units_colliding); i++)
+		{
+			var colliding_unit = ds_units_colliding[|i]
+			
+			with(colliding_unit)
+			{
+				if(state != unit_states.MOVE)
+				{
+					var old_direction = direction
+					var displacement_direction = point_direction(other.x, other.y, x,y)
+					var displacement_x = lengthdir_x(displacement_value, displacement_direction)
+					var displacement_y = lengthdir_y(displacement_value, displacement_direction)
+					x += displacement_x
+					y += displacement_y
+					direction = old_direction
+				}
+			
+			}
+		}
+	
+	}
+	
+	ds_list_destroy(ds_units_colliding)
+
+
 }

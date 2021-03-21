@@ -22,24 +22,8 @@ function network_player_setup(socket, username){
 	broadcast_create_unit(hornet)
 
 }
-function send_create_unit(socket, unit){
-	buffer_seek(server_buffer, buffer_seek_start,0)
-	buffer_write(server_buffer, buffer_u8, network.unit_create)
-	buffer_write(server_buffer, buffer_string, unit.unit_type);
-	buffer_write(server_buffer, buffer_u32, unit.id);
-	buffer_write(server_buffer, buffer_u16, unit.unit_controller);
-	buffer_write(server_buffer, buffer_u16, unit.x);
-	buffer_write(server_buffer, buffer_u16, unit.y);
-	network_send_packet(socket, server_buffer, buffer_tell(server_buffer));
-}
 
 
-function broadcast_create_unit(unit){
-	for (var i =0; i< ds_list_size(socket_list); i++){
-		var socket = ds_list_find_value(socket_list, i)
-		send_create_unit(socket, unit)
-	}
-}
 
 function load_in_players(player_socket){
 	for (var i=0; i<ds_list_size(socket_list); i++)
@@ -70,18 +54,3 @@ function load_in_units(player_socket){
 
 }
 
-function send_player_sync(socket, player){
-	buffer_seek(server_buffer, buffer_seek_start,0)
-	buffer_write(server_buffer, buffer_u8, network.player_sync)
-	buffer_write(server_buffer, buffer_u8, player.socket);
-	buffer_write(server_buffer, buffer_string, player.username);
-	buffer_write(server_buffer, buffer_u32, player.assigned_colour);
-	network_send_packet(socket, server_buffer, buffer_tell(server_buffer));
-
-}
-function broadcast_player_sync(player){
-	for (var i =0; i< ds_list_size(socket_list); i++){
-		var socket = ds_list_find_value(socket_list, i)
-		send_player_sync(socket, player)
-	}
-}

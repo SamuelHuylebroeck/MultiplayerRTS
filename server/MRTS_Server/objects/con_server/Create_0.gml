@@ -12,3 +12,4 @@ server_buffer = buffer_create(buffer_size, buffer_fixed, 1);
 
 socket_list = ds_list_create();
 socket_to_player = ds_map_create();
+ready_list = ds_list_create();

@@ -1,9 +1,13 @@
-function create_movement_order(x,y,ds_units_to_order){
+function create_movement_order(to_x,to_y,ds_units_to_order){
 	var to_order = ds_list_create()
 	ds_list_copy(to_order ,ds_units_to_order)
 	//Create a move order object
-	var mo = instance_create_layer(x, y, "Orders", ord_move)
+	var mo = instance_create_layer(to_x, to_y, "Orders", ord_move)
 	//Add the units to this move order
+	var flock = instance_create_layer(to_x,to_x,"Logic", obj_flock)
+	flock.radius = 32
+	flock.deadzone = 0.9
+	mo.flock = flock
 	for (var i = 0; i<ds_list_size(to_order); i++)
 	{
 		var unit = to_order[|i]
@@ -12,10 +16,13 @@ function create_movement_order(x,y,ds_units_to_order){
 			clear_current_order()
 			current_order = mo
 			target = mo
-			state = unit_states.MOVE
+			state_initialized = false;
+			state = unit_states.MOVE;
 		}
+		ds_list_add(flock.ds_flock_agents, unit)
 	}
 	ds_list_destroy(to_order)
+	
 }
 
 
@@ -36,4 +43,10 @@ function send_movement_order(to_x, to_y, ds_units_to_order){
 		}
 		network_send_packet(client, client_buffer, buffer_tell(client_buffer));
 	}
+}
+	
+function calculate_movement_path(to_x, to_y, path)
+{
+	var path_found = mp_potential_path_object(path, to_x, to_y, COLLISION_TILESIZE/4, 4, p_obstruction);
+	return path_found
 }

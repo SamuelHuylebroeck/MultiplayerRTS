@@ -1,5 +1,5 @@
 #region configuration
-unit_state_script[unit_states.IDLE] = -1
+unit_state_script[unit_states.IDLE] = unit_idle
 unit_state_script[unit_states.MOVE] = unit_movement
 
 unit_state_sprite[unit_states.IDLE] = un_hornet
@@ -18,6 +18,13 @@ controlling_player = -1
 //Shaders
 us_mark_colour = shader_get_uniform(sha_team_colour, "marker_colour")
 us_player_colour = shader_get_uniform(sha_team_colour, "player_colour")
+
+//movement
+//collision_map = layer_tilemap_get_id(layer_get_id("Tiles_Collision"))
+h_speed = 0
+v_speed = 0 
+current_path = path_add()
+
 #endregion
 
 #region internal setup

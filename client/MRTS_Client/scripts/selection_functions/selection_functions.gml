@@ -15,7 +15,7 @@ function add_unit_to_selection(unit){
 }
 
 
-function select_units_in_rectangle(pressed_x, pressed_y, released_x, released_y){
+function select_units_in_rectangle(pressed_x, pressed_y, released_x, released_y, controlling_player){
 	
 	//show_debug_message("passed rectangle: [" +string(pressed_x)+","+string(pressed_y)+"] -> ["+string(released_x)+","+string(released_y) +"]")
 	//Get rectangle coordinates
@@ -53,7 +53,7 @@ function select_units_in_rectangle(pressed_x, pressed_y, released_x, released_y)
 		for(var i =0; i< nr_candidates; i++)
 		{
 			var candidate = ds_units_in_box[|i]
-			if (candidate.controlling_player = obj_local_player)
+			if (candidate.controlling_player = controlling_player)
 			{
 				candidate.selected = true
 				ds_list_add(selected_units, candidate)

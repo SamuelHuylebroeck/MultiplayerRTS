@@ -25,7 +25,9 @@
   "physicsShapePoints": [],
   "eventList": [],
   "properties": [],
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"propertyId":{"name":"unit_acceleration","path":"objects/p_unit/p_unit.yy",},"objectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"value":"0.5","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+  ],
   "parent": {
     "name": "units",
     "path": "folders/Objects/units.yy",
