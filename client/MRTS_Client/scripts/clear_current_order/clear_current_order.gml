@@ -5,14 +5,56 @@ function clear_current_order(){
 	{
 		var unit = self
 		with(current_order){
-			var index = ds_list_find_index(ds_ordered_units, unit.id)
-			if(index!=-1){
-				ds_list_delete(ds_ordered_units, index)
-			}
-			if(ds_list_size(ds_ordered_units) <= 0){
-				instance_destroy()
-			}	
+			execute_clear_order(unit)
 		}
 		current_order = noone
 	}
+}
+
+
+function execute_clear_order(ordered_unit){
+	switch object_index{
+		case ord_move:
+			execute_clear_movement_order(ordered_unit)
+			break;
+		
+		default:
+			break;
+	}
+
+}
+
+
+function execute_clear_movement_order(ordered_unit){
+	clear_from_swarm(ordered_unit)
+	clear_from_list(ordered_unit)
+	if(ds_list_size(ds_ordered_units) <= 0){
+		instance_destroy()
+	}	
+}
+
+function clear_from_list(ordered_unit){
+	var index = ds_list_find_index(ds_ordered_units, ordered_unit.id)
+	if(index!=-1){
+		ds_list_delete(ds_ordered_units, index)
+	}
+
+}
+
+function clear_from_swarm(ordered_unit){
+	if(swarm !=-1)
+	{
+		with(swarm)
+		{
+			var swarm_index = ds_list_find_index(ds_swarm_agents, ordered_unit.id)
+			if (swarm_index != -1){
+				ds_list_delete(ds_swarm_agents, swarm_index)
+					if(ds_list_size(ds_swarm_agents) <= 0){
+						instance_destroy()
+					}	
+			}
+		}
+	
+	}
+
 }

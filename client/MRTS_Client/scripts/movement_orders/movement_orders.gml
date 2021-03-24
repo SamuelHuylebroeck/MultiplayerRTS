@@ -4,10 +4,16 @@ function create_movement_order(to_x,to_y,ds_units_to_order){
 	//Create a move order object
 	var mo = instance_create_layer(to_x, to_y, "Orders", ord_move)
 	//Add the units to this move order
-	var flock = instance_create_layer(to_x,to_x,"Logic", obj_flock)
-	flock.radius = 32
-	flock.deadzone = 0.9
-	mo.flock = flock
+	var swarm = instance_create_layer(to_x,to_y,"Logic", obj_swarm)
+	swarm.swarm_radius = 32
+	swarm.swarm_deadzone = 0.5
+	swarm.swarm_active = true
+	if(global.debug_units_swarm){
+		//swarm_agent.unit_override_colour = swarm.swarm_debug_colour
+		swarm.swarm_debug_colour = global.colours[global.colour_index]
+		global.colour_index = (global.colour_index+1)%array_length(global.colours)
+	}
+	mo.swarm = swarm
 	for (var i = 0; i<ds_list_size(to_order); i++)
 	{
 		var unit = to_order[|i]
@@ -19,7 +25,13 @@ function create_movement_order(to_x,to_y,ds_units_to_order){
 			state_initialized = false;
 			state = unit_states.MOVE;
 		}
-		ds_list_add(flock.ds_flock_agents, unit)
+		if(unit.unit_is_swarmer){
+			if(global.debug_units_swarm){
+				unit.unit_override_colour = swarm.swarm_debug_colour
+
+			}
+			ds_list_add(swarm.ds_swarm_agents, unit)
+		}
 	}
 	ds_list_destroy(to_order)
 	

@@ -1,6 +1,6 @@
 event_inherited();
-if(flock != -1){
-	with(flock)
+if(swarm != -1){
+	with(swarm)
 	{
 		instance_destroy()
 	}

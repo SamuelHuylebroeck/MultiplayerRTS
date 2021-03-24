@@ -1,6 +1,6 @@
 {
   "resources": [
-    {"id":{"name":"obj_flock","path":"objects/obj_flock/obj_flock.yy",},"order":0,},
+    {"id":{"name":"obj_swarm","path":"objects/obj_swarm/obj_swarm.yy",},"order":0,},
     {"id":{"name":"scr_setup_unit_pathing_grid","path":"scripts/scr_setup_unit_pathing_grid/scr_setup_unit_pathing_grid.yy",},"order":3,},
     {"id":{"name":"room_lobby","path":"rooms/room_lobby/room_lobby.yy",},"order":0,},
     {"id":{"name":"spr_sensor","path":"sprites/spr_sensor/spr_sensor.yy",},"order":0,},
@@ -39,7 +39,7 @@
     {"id":{"name":"unit_type_map","path":"scripts/unit_type_map/unit_type_map.yy",},"order":2,},
     {"id":{"name":"obj_connection_status","path":"objects/obj_connection_status/obj_connection_status.yy",},"order":14,},
     {"id":{"name":"session_start_functions","path":"scripts/session_start_functions/session_start_functions.yy",},"order":5,},
-    {"id":{"name":"un_flock","path":"objects/un_flock/un_flock.yy",},"order":2,},
+    {"id":{"name":"un_swarm_agent","path":"objects/un_swarm_agent/un_swarm_agent.yy",},"order":2,},
     {"id":{"name":"unit_idle","path":"scripts/unit_idle/unit_idle.yy",},"order":4,},
     {"id":{"name":"unit_movement","path":"scripts/unit_movement/unit_movement.yy",},"order":0,},
     {"id":{"name":"movement_debug_scripts","path":"scripts/movement_debug_scripts/movement_debug_scripts.yy",},"order":0,},
@@ -55,7 +55,7 @@
     {"id":{"name":"spr_obstruction_long_h","path":"sprites/spr_obstruction_long_h/spr_obstruction_long_h.yy",},"order":2,},
     {"id":{"name":"spr_ui_move_target","path":"sprites/spr_ui_move_target/spr_ui_move_target.yy",},"order":1,},
     {"id":{"name":"spr_hornet","path":"sprites/spr_hornet/spr_hornet.yy",},"order":0,},
-    {"id":{"name":"unit_flock_movement","path":"scripts/unit_flock_movement/unit_flock_movement.yy",},"order":0,},
+    {"id":{"name":"unit_swarm_movement_logic","path":"scripts/unit_swarm_movement_logic/unit_swarm_movement_logic.yy",},"order":0,},
     {"id":{"name":"spr_placeholder_rect_button","path":"sprites/spr_placeholder_rect_button/spr_placeholder_rect_button.yy",},"order":0,},
     {"id":{"name":"obj_multiplayer_game","path":"objects/obj_multiplayer_game/obj_multiplayer_game.yy",},"order":7,},
     {"id":{"name":"sha_team_colour","path":"shaders/sha_team_colour/sha_team_colour.yy",},"order":0,},
@@ -131,7 +131,7 @@
     {"folderPath":"folders/Sprites/pathfinding.yy","order":7,"resourceVersion":"1.0","name":"pathfinding","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/units/group_control.yy","order":3,"resourceVersion":"1.0","name":"group_control","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Scripts/math.yy","order":7,"resourceVersion":"1.0","name":"math","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Scripts/units/flock.yy","order":6,"resourceVersion":"1.0","name":"flock","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Scripts/units/swarm.yy","order":6,"resourceVersion":"1.0","name":"swarm","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

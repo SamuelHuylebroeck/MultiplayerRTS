@@ -9,9 +9,24 @@ function unit_movement(){
 	current_speed = clamp(current_speed + unit_acceleration, 0, unit_max_speed)
 	path_speed = current_speed
 	animate_movement();
-	displace_colliding_units();
+	//displace_colliding_units();
 }
 
+
+function unit_swarm_movement(){
+	current_speed = clamp(current_speed + unit_acceleration, 0, unit_max_speed)
+	
+	
+	//Calculate direction
+	if(ds_queue_size(ds_position_history)>5){
+		var pos = ds_queue_dequeue(ds_position_history) 
+		direction = point_direction(pos[0], pos[1],x,y)
+	}
+
+	ds_queue_enqueue(ds_position_history, [x,y])
+	image_angle=direction
+	
+}
 
 
 function init_movement(){

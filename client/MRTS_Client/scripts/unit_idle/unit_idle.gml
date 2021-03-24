@@ -4,9 +4,14 @@ function unit_idle(){
 	//Decay unit speed
 	current_speed = clamp(current_speed-unit_acceleration, 0 , unit_max_speed)
 	//Displace colliding units
-	displace_colliding_units();
-	//Unstuck out of possible impassible terrain
-	displace_self();
+	//displace_colliding_units();
+	//Get pushed around by others units and unstuck out of possible impassible terrain
+	frames_to_displacement--;
+	if(frames_to_displacement<=0){
+		displace_self();
+		frames_to_displacement = frames_per_displacement
+	}
+	
 }
 
 function displace_self(){
@@ -24,6 +29,9 @@ function displace_self(){
 		
 		var displace_x = lengthdir_x(displacement_value, dir)
 		var displace_y = lengthdir_y(displacement_value, dir)
+		
+		x+=displace_x
+		y+=displace_y
 	}
 	ds_list_destroy(ds_obstructions_colliding)
 

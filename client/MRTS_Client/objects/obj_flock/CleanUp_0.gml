@@ -1,1 +1,0 @@
-ds_list_destroy(ds_flock_agents)

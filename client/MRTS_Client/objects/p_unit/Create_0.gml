@@ -4,6 +4,8 @@ unit_state_script[unit_states.MOVE] = unit_movement
 
 unit_state_sprite[unit_states.IDLE] = un_hornet
 unit_state_sprite[unit_states.MOVE] = un_hornet
+
+frames_per_displacement = 5
 #endregion
 
 #region declaration
@@ -24,6 +26,7 @@ us_player_colour = shader_get_uniform(sha_team_colour, "player_colour")
 h_speed = 0
 v_speed = 0 
 current_path = path_add()
+frames_to_displacement=0
 
 #endregion
 

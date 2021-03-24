@@ -48,4 +48,6 @@ global.debug_units_state = false;
 global.debug_units_ownership = false;
 global.debug_units_selected_units_pathfinding = true;
 global.debug_units_all_pathfinding = false;
+global.debug_units_swarm = false;
+global.debug_use_new_swarm_move = false;
 #endregion

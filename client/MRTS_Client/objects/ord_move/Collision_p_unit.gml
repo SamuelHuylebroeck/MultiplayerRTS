@@ -12,15 +12,15 @@ if(index != -1)
 		target = noone
 		path_clear_points(current_path)
 	}
-	//remove from flock
-	if(flock !=-1)
+	//remove from swarm
+	if(swarm !=-1)
 	{
-		with(flock)
+		with(swarm)
 		{
-			var flock_index = ds_list_find_index(ds_flock_agents, unit.id)
-			if (flock_index != -1){
-				ds_list_delete(ds_flock_agents, index)
-					if(ds_list_size(ds_flock_agents) <= 0){
+			var swarm_index = ds_list_find_index(ds_swarm_agents, unit.id)
+			if (swarm_index != -1){
+				ds_list_delete(ds_swarm_agents, swarm_index)
+					if(ds_list_size(ds_swarm_agents) <= 0){
 						instance_destroy()
 					}	
 			}
