@@ -14,4 +14,7 @@ switch(state){
 		select_units_in_rectangle(pressed_x, pressed_y, release_x, release_y, local_player)
 		state = player_states.FREE
 		break;
+	case player_states.FREE:
+
+		break;
 }

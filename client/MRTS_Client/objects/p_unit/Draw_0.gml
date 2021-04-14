@@ -2,7 +2,7 @@ var player_colour = c_white
 if (!is_undefined(controlling_player) or controlling_player != -1){
 	player_colour = controlling_player.assigned_colour
 	if(global.debug_units_swarm){
-		player_colour = unit_override_colour
+		//player_colour = unit_override_colour
 	}
 }
 

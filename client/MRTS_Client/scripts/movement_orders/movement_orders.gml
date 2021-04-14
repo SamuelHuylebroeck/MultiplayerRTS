@@ -1,8 +1,8 @@
-function create_movement_order(to_x,to_y,ds_units_to_order){
+function create_movement_order(to_x,to_y,ds_units_to_order, order_object, move_state){
 	var to_order = ds_list_create()
 	ds_list_copy(to_order ,ds_units_to_order)
 	//Create a move order object
-	var mo = instance_create_layer(to_x, to_y, "Orders", ord_move)
+	var mo = instance_create_layer(to_x, to_y, "Orders", order_object)
 	//Add the units to this move order
 	var swarm = instance_create_layer(to_x,to_y,"Logic", obj_swarm)
 	swarm.swarm_radius = 32
@@ -23,7 +23,7 @@ function create_movement_order(to_x,to_y,ds_units_to_order){
 			current_order = mo
 			target = mo
 			state_initialized = false;
-			state = unit_states.MOVE;
+			state = move_state;
 		}
 		if(unit.unit_is_swarmer){
 			if(global.debug_units_swarm){
@@ -31,10 +31,22 @@ function create_movement_order(to_x,to_y,ds_units_to_order){
 
 			}
 			ds_list_add(swarm.ds_swarm_agents, unit)
+			self.swarm = swarm
 		}
 	}
 	ds_list_destroy(to_order)
 	
+}
+
+function create_attack_move_order(to_x,to_y,ds_units_to_order){
+	create_movement_order(to_x, to_y, ds_units_to_order, ord_attack_move, unit_states.ATTACK_MOVE)
+
+	
+}
+
+function create_move_order(to_x, to_y, ds_units_to_order){
+	create_movement_order(to_x, to_y, ds_units_to_order, ord_move, unit_states.MOVE)
+
 }
 
 

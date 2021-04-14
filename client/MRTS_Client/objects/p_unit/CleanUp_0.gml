@@ -1,0 +1,4 @@
+ds_list_destroy(aggro_context)
+ds_list_destroy(ds_unit_context)
+ds_stack_destroy(ds_order_memory_stack)
+clear_from_swarm(self)

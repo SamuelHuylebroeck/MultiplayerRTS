@@ -3,7 +3,10 @@ function clear_selection(){
 	for (var i =0; i<ds_list_size(selected_units); i++)
 	{
 		var unit = ds_list_find_value(selected_units, i)
-		unit.selected = false;
+		if instance_exists(unit)
+		{
+			unit.selected = false;
+		}
 	}
 	//clear the list
 	ds_list_clear(selected_units)
@@ -16,7 +19,6 @@ function add_unit_to_selection(unit){
 
 
 function select_units_in_rectangle(pressed_x, pressed_y, released_x, released_y, controlling_player){
-	
 	//show_debug_message("passed rectangle: [" +string(pressed_x)+","+string(pressed_y)+"] -> ["+string(released_x)+","+string(released_y) +"]")
 	//Get rectangle coordinates
 	var tl_x = min(pressed_x, released_x)

@@ -1,3 +1,4 @@
+/// @description Debug: Spawn player hornet
 if (not global.connected )
 {
 	var local_player = obj_local_game.local_player
@@ -7,7 +8,7 @@ if (not global.connected )
 		var hornet = instance_create_layer(mouse_x, mouse_y,"Instances", un_hornet)
 		hornet.controlling_player = local_player.id
 		with(hornet){
-			//scr_unit_execute_movement_and_collision()
+			scr_unit_execute_movement_and_collision(0,0)
 		}
 	}
 }

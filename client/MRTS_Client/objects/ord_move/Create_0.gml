@@ -1,3 +1,3 @@
 event_inherited();
 
-swarm = noone;
+swarm = -1;

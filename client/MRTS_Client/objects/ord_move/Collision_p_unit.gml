@@ -6,7 +6,18 @@ if(index != -1)
 	//Update unit
 	with(unit)
 	{
-		state = unit_states.IDLE
+		state = unit_default_state
+		switch(state){
+			case unit_states.IDLE:
+				initialize_idle()
+				break;
+			case unit_states.GUARD:
+				initialize_guard()
+				break;
+			default:
+				break;
+		
+		}
 		state_initialized=false
 		current_speed = 0
 		target = noone

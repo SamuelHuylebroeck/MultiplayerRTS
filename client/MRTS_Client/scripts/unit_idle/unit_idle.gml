@@ -1,5 +1,3 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function unit_idle(){
 	//Decay unit speed
 	current_speed = clamp(current_speed-unit_acceleration, 0 , unit_max_speed)
@@ -12,6 +10,13 @@ function unit_idle(){
 		frames_to_displacement = frames_per_displacement
 	}
 	
+}
+
+function initialize_idle()
+{
+	state = unit_states.IDLE
+	sprite_index = unit_state_sprite[state]
+
 }
 
 function displace_self(){
@@ -29,10 +34,12 @@ function displace_self(){
 		
 		var displace_x = lengthdir_x(displacement_value, dir)
 		var displace_y = lengthdir_y(displacement_value, dir)
-		
-		x+=displace_x
-		y+=displace_y
+		scr_unit_execute_movement_and_collision(displace_x, displace_y)
+		//x+=displace_x
+		//y+=displace_y
 	}
 	ds_list_destroy(ds_obstructions_colliding)
 
 }
+	
+	

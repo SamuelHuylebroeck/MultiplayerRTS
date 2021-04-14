@@ -22,7 +22,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "pathfinding",
-    "path": "folders/Objects/pathfinding.yy",
+    "path": "folders/Objects/control/pathfinding.yy",
   },
   "resourceVersion": "1.0",
   "name": "p_obstruction",

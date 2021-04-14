@@ -17,7 +17,9 @@ function execute_clear_order(ordered_unit){
 		case ord_move:
 			execute_clear_movement_order(ordered_unit)
 			break;
-		
+		case ord_attack_move:
+			execute_clear_movement_order(ordered_unit)
+			break;
 		default:
 			break;
 	}
@@ -42,19 +44,23 @@ function clear_from_list(ordered_unit){
 }
 
 function clear_from_swarm(ordered_unit){
-	if(swarm !=-1)
+	if(swarm !=noone)
 	{
-		with(swarm)
-		{
-			var swarm_index = ds_list_find_index(ds_swarm_agents, ordered_unit.id)
-			if (swarm_index != -1){
-				ds_list_delete(ds_swarm_agents, swarm_index)
-					if(ds_list_size(ds_swarm_agents) <= 0){
-						instance_destroy()
-					}	
-			}
-		}
-	
+		remove_unit_from_swarm(swarm, ordered_unit)
 	}
+}
 
+function remove_unit_from_swarm(swarm, unit)
+{
+	with(swarm)
+	{
+		var swarm_index = ds_list_find_index(ds_swarm_agents, unit.id)
+		if (swarm_index != -1){
+			ds_list_delete(ds_swarm_agents, swarm_index)
+			if(ds_list_size(ds_swarm_agents) <= 0)
+			{
+				instance_destroy()
+			}	
+		}
+	}
 }

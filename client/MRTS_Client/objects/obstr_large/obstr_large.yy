@@ -28,7 +28,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "pathfinding",
-    "path": "folders/Objects/pathfinding.yy",
+    "path": "folders/Objects/control/pathfinding.yy",
   },
   "resourceVersion": "1.0",
   "name": "obstr_large",

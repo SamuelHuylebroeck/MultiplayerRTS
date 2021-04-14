@@ -9,7 +9,7 @@ if(global.connected)
 {
 	local_player = obj_local_game.local_player
 }
-with(obj_local_player){
+with(local_player){
 	clear_selection()
 	if(this_unit.controlling_player = local_player)
 	{

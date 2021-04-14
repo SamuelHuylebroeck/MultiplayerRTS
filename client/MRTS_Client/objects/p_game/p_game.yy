@@ -18,13 +18,13 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":4,"eventType":7,"collisionObjectId":null,"parent":{"name":"p_game","path":"objects/p_game/p_game.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":4,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "control",
-    "path": "folders/Objects/control.yy",
+    "name": "menus",
+    "path": "folders/Objects/menus.yy",
   },
   "resourceVersion": "1.0",
   "name": "p_game",

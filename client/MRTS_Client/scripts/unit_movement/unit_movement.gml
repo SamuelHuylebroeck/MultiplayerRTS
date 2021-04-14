@@ -12,10 +12,8 @@ function unit_movement(){
 	//displace_colliding_units();
 }
 
-
-function unit_swarm_movement(){
+function unit_attack_movement(){
 	current_speed = clamp(current_speed + unit_acceleration, 0, unit_max_speed)
-	
 	
 	//Calculate direction
 	if(ds_queue_size(ds_position_history)>5){
@@ -24,7 +22,33 @@ function unit_swarm_movement(){
 	}
 
 	ds_queue_enqueue(ds_position_history, [x,y])
-	image_angle=direction
+	//Check for aggro
+	var target_found = check_for_aggro()
+	if(target_found)
+	{
+		var attack_move_context = {
+			context_state : state
+		};
+		ds_stack_push(ds_order_memory_stack, attack_move_context)
+		initialize_chase()
+	}
+	animate_movement()
+
+}
+
+
+function unit_swarm_movement(){
+	current_speed = clamp(current_speed + unit_acceleration, 0, unit_max_speed)
+	
+	//Calculate direction
+	if(ds_queue_size(ds_position_history)>5){
+		var pos = ds_queue_dequeue(ds_position_history) 
+		direction = point_direction(pos[0], pos[1],x,y)
+	}
+
+	ds_queue_enqueue(ds_position_history, [x,y])
+	animate_movement()
+	
 	
 }
 
@@ -74,4 +98,13 @@ function displace_colliding_units(){
 	ds_list_destroy(ds_units_colliding)
 
 
+}
+	
+	
+function unit_execute_turning(target_direction, turn_rate){
+	var current_direction = direction
+	var turn_commit = sign(angle_difference(current_direction,target_direction))*turn_rate
+	if(abs(angle_difference(current_direction,target_direction)) <= turn_rate) turn_commit = angle_difference(current_direction,target_direction)
+	 //Commit turning
+	 direction -= turn_commit
 }

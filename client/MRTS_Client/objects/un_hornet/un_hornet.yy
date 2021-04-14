@@ -1,15 +1,15 @@
 {
   "spriteId": {
-    "name": "spr_hornet",
-    "path": "sprites/spr_hornet/spr_hornet.yy",
+    "name": "spr_hornet_idle",
+    "path": "sprites/spr_hornet_idle/spr_hornet_idle.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "p_unit",
-    "path": "objects/p_unit/p_unit.yy",
+    "name": "un_swarm_agent",
+    "path": "objects/un_swarm_agent/un_swarm_agent.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -22,11 +22,22 @@
   "physicsFriction": 0.2,
   "physicsStartAwake": true,
   "physicsKinematic": false,
-  "physicsShapePoints": [],
-  "eventList": [],
+  "physicsShapePoints": [
+    {"x":0.0,"y":0.0,},
+    {"x":32.0,"y":0.0,},
+    {"x":32.0,"y":32.0,},
+    {"x":0.0,"y":32.0,},
+  ],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [
     {"propertyId":{"name":"unit_acceleration","path":"objects/p_unit/p_unit.yy",},"objectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"value":"0.5","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"unit_attack_execution","path":"objects/p_unit/p_unit.yy",},"objectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"value":"hornet_attack","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"unit_attack_setup","path":"objects/p_unit/p_unit.yy",},"objectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"value":"hornet_attack_setup","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"unit_attack_cooldown","path":"objects/p_unit/p_unit.yy",},"objectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"unit_max_speed","path":"objects/p_unit/p_unit.yy",},"objectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"value":"1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "units",
