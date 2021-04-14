@@ -23,12 +23,42 @@ if( global.debug_units_aggro){
 #region states
 if( global.debug_units_state){
 	set_up_draw_state()
-	with(p_unit){
+	with(p_unit)
+	{
 		if (not global.debug_selected_only or selected){
 			draw_state()
 		}
 
 	}
+}
+#endregion
+#region context
+if(global.debug_units_movement_context){
+	//Swarm mates
+	set_up_draw_context_swarm_mates()
+	with(p_unit)
+	{
+		if (not global.debug_selected_only or selected){
+			draw_context_swarm_mates()
+		}
+	}
+	//unit obstacles
+	set_up_draw_context_obstacles()
+	with(p_unit)
+	{
+		if (not global.debug_selected_only or selected){
+			draw_context_obstacles()
+		}
+	}
+	//terrain obstacles
+	set_up_draw_context_terrain()
+	with(p_unit)
+	{
+		if (not global.debug_selected_only or selected){
+			draw_context_terrain()
+		}
+	}
+	
 }
 
 #endregion

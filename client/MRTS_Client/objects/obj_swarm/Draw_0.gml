@@ -21,19 +21,10 @@ for(var i =0; i< ds_list_size(ds_swarm_agents);i++){
 	var swarm_agent = ds_swarm_agents[|i]
 	if(instance_exists(swarm_agent))
 	{
-		var context_list = ds_list_create()
-		get_context(self, swarm_agent, context_list)
-
-		if(global.debug_units_swarm_movement_context and (swarm_agent.selected or not global.debug_selected_only)){
-			//Draw context
-			debug_draw_swarm_context(swarm_agent, context_list)
-		}
 		if(global.debug_units_swarm_movement_contributions and (swarm_agent.selected or not global.debug_selected_only)){
-			//Draw vector contribution aggregate
-			debug_draw_swarm_movement_contributions(swarm_agent, context_list, swarm_weights)
+			//Draw vector individual component contributions
+			debug_draw_swarm_movement_contributions(swarm_agent, swarm_agent.ds_unit_context, swarm_weights)
 		}
-		//Draw individual contributions
-		ds_list_destroy(context_list)
 	}
 }
 

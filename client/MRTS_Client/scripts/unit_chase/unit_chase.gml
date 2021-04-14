@@ -30,15 +30,10 @@ function unit_chase(){
 
 function chase_movement_solo()
 {
-	var neighbour_list = ds_list_create()
-	collision_circle_list(x, y, unit_avoidance_radius , p_unit, false, true, neighbour_list, false);
-	for(var i = 0; i<ds_list_size(neighbour_list);i++)
-	{
-		var neighbour = neighbour_list[|i]
-	}
-	
+
 	if(target != noone and instance_exists(target))
 	{
+		//Move contribution towards target
 		var x_to = target.x;
 		var y_to = target.y;
 		
@@ -52,7 +47,7 @@ function chase_movement_solo()
 		}
 		var h_speed = lengthdir_x(speed_this_frame, dir);
 		var v_speed = lengthdir_y(speed_this_frame, dir);
-		
+
 		if( abs(angle_difference(direction, dir) > unit_move_angle_tolerance)){
 			h_speed = 0;
 			v_speed = 0;
@@ -60,6 +55,16 @@ function chase_movement_solo()
 
 		unit_execute_turning(dir, unit_turn_rate_gs)
 		scr_unit_execute_movement_and_collision(h_speed, v_speed)
+		//avoidance movement
+		var proposed_avoidance = calculate_move_avoidance(self, ds_unit_context)
+		//Clamp proposed avoidance to current_speed/2
+		if (proposed_avoidance[0]*proposed_avoidance[0] + proposed_avoidance[1]*proposed_avoidance[1]>current_speed*current_speed/4){
+			var av_dir = point_direction(0,0,proposed_avoidance[0], proposed_avoidance[1])
+			proposed_avoidance[0] = lengthdir_x(current_speed/2, av_dir)
+			proposed_avoidance[1] = lengthdir_x(current_speed/2, av_dir)
+		
+		}
+		scr_unit_execute_movement_and_collision(proposed_avoidance[0], proposed_avoidance[1])
 		image_angle = direction
 		
 	}

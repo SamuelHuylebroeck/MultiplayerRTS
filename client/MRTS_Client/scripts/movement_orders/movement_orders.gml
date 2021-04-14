@@ -24,6 +24,7 @@ function create_movement_order(to_x,to_y,ds_units_to_order, order_object, move_s
 			target = mo
 			state_initialized = false;
 			state = move_state;
+			self.swarm = swarm
 		}
 		if(unit.unit_is_swarmer){
 			if(global.debug_units_swarm){

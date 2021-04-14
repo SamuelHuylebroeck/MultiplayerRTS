@@ -37,7 +37,7 @@
     {"propertyId":{"name":"unit_attack_execution","path":"objects/p_unit/p_unit.yy",},"objectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"value":"hornet_attack","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"unit_attack_setup","path":"objects/p_unit/p_unit.yy",},"objectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"value":"hornet_attack_setup","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"unit_attack_cooldown","path":"objects/p_unit/p_unit.yy",},"objectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"unit_max_speed","path":"objects/p_unit/p_unit.yy",},"objectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"value":"1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"unit_max_speed","path":"objects/p_unit/p_unit.yy",},"objectId":{"name":"p_unit","path":"objects/p_unit/p_unit.yy",},"value":"2.5","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "units",

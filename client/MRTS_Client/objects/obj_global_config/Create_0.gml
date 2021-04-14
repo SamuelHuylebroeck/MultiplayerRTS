@@ -60,8 +60,8 @@ enum session_states{
 #region debug visualization settings
 global.debug_units_state = true;
 global.debug_units_aggro = false;
-global.debug_units_swarm_movement_context = true;
-global.debug_units_swarm_movement_contributions = true;
+global.debug_units_movement_context = true;
+global.debug_units_swarm_movement_contributions = false;
 global.debug_units_swarm_movement_contributions_scale = 10;
 global.debug_selected_only = false;
 global.debug_units_selected_units_pathfinding = true;

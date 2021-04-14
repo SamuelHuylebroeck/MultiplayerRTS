@@ -62,3 +62,63 @@ function draw_state(){
 
 }
 #endregion
+
+#region context visualization
+function set_up_draw_context_swarm_mates(){
+	draw_set_color(c_lime)
+	draw_set_alpha(0.2)
+}
+
+function draw_context_swarm_mates(){
+	for(var i = 0; i< ds_list_size(ds_unit_context); i++){
+		var context = ds_unit_context[|i]
+		if(context.is_part_of_swarm and not context.is_obstacle)
+		{
+			draw_line(x, y, context.pos_x, context.pos_y)
+			draw_circle(context.pos_x, context.pos_y, 3, false)
+			var x_to = lengthdir_x(10,context.dir)
+			var y_to = lengthdir_y(10,context.dir)
+			draw_arrow(context.pos_x,context.pos_y,context.pos_x+x_to,context.pos_y+y_to, 3)
+		}
+	}
+}
+
+function set_up_draw_context_obstacles(){
+	draw_set_color(c_orange)
+	draw_set_alpha(0.2)
+}
+
+function draw_context_obstacles(){
+	for(var i = 0; i< ds_list_size(ds_unit_context); i++){
+		var context = ds_unit_context[|i]
+		if(not context.is_part_of_swarm and not context.is_obstacle)
+		{
+			draw_line(x, y, context.pos_x, context.pos_y)
+			draw_circle(context.pos_x, context.pos_y, 5, false)
+			var x_to = lengthdir_x(10,context.dir)
+			var y_to = lengthdir_y(10,context.dir)
+			draw_arrow(context.pos_x,context.pos_y,context.pos_x+x_to,context.pos_y+y_to, 3)
+		}
+	}
+}
+
+function set_up_draw_context_terrain(){
+	draw_set_color(c_red)
+	draw_set_alpha(0.2)
+}
+
+function draw_context_terrain(){
+		for(var i = 0; i< ds_list_size(ds_unit_context); i++){
+		var context = ds_unit_context[|i]
+		if(context.is_obstacle)
+		{
+			draw_line(x, y, context.pos_x, context.pos_y)
+			draw_circle(context.pos_x, context.pos_y, 5, false)
+			var dir = point_direction(x, y, context.pos_x, context.pos_y)
+			var x_to = lengthdir_x(10,dir)
+			var y_to = lengthdir_y(10,dir)
+			draw_arrow(context.pos_x,context.pos_y,context.pos_x+x_to,context.pos_y+y_to, 3)
+		}
+	}
+}
+#endregion

@@ -5,13 +5,19 @@ function unit_attack(){
 	{
 		var dir = point_direction(x,y,target.x, target.y)
 		unit_execute_turning(dir, unit_turn_rate_gs)
-		image_angle = direction
-		frames_to_displacement--;
-		if(frames_to_displacement<=0){
 		
-			displace_self();
-			frames_to_displacement = frames_per_displacement
+		//avoidance movement
+		var proposed_avoidance = calculate_move_avoidance(self, ds_unit_context)
+		//Clamp proposed avoidance to current_speed/2
+		if (proposed_avoidance[0]*proposed_avoidance[0] + proposed_avoidance[1]*proposed_avoidance[1]>current_speed*current_speed/4){
+			var av_dir = point_direction(0,0,proposed_avoidance[0], proposed_avoidance[1])
+			proposed_avoidance[0] = lengthdir_x(current_speed/2, av_dir)
+			proposed_avoidance[1] = lengthdir_x(current_speed/2, av_dir)
+		
 		}
+		scr_unit_execute_movement_and_collision(proposed_avoidance[0], proposed_avoidance[1])
+		image_angle = direction
+
 		if(unit_attack_execution != -1)
 		{
 			scr_script_execute_array(unit_attack_execution, [])
